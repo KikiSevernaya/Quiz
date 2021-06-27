@@ -45,7 +45,7 @@ SecondW::~SecondW()
 
 void SecondW::on_pushButton_2_clicked()
 {
-    QMessageBox::StandardButton reply = QMessageBox::question(this, "Вы уверены, что хотите покинуть игру?", "Может быть, именно сегодня вы станете миллионером...",  QMessageBox::No | QMessageBox::Yes);
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Ты уверен, что хочешь покинуть игру?", "Может быть, именно сегодня ты станешь миллионером...",  QMessageBox::No | QMessageBox::Yes);
     if (reply == QMessageBox::Yes) {
         this->hide();
         ui->stackedWidget->setCurrentIndex(0);
@@ -85,9 +85,6 @@ void SecondW::on_answerButton_clicked()
     myPro->waitForFinished();
     QString lin;
     lin.append(myPro->readAllStandardOutput());
-    //qDebug() << "lin: " << lin;
-    //qDebug() << "page: " << page;
-    //qDebug() << then;
     if (!answer.isEmpty()) {
         if (!lin.isEmpty()) {
             QString pro1 = "grep";
@@ -103,7 +100,6 @@ void SecondW::on_answerButton_clicked()
             myPro2->waitForFinished();
             QString lin2;
             lin2.append(myPro2->readAllStandardOutput());
-            //qDebug()<< lin2.toInt();
             if (page == (lin2.toInt() - 1 )) {
                 ui->result->setStyleSheet("color: black; background: white; border-width: 3px; border-style: solid; border-color: green green green green");
                 ui->result->setText("Отлично! Ответ верный, мой юный падаван:)");
@@ -124,7 +120,6 @@ void SecondW::on_answerButton_clicked()
         }
 
         if (lin.isEmpty()) {
-            //qDebug()<< "lol";
             ui->result->setStyleSheet("color: black; background: white; border-width: 3px; border-style: solid; border-color: red red red red");
             ui->result->setText("Упс...Это неверный ответ!");
             ui->result->setVisible(true);
