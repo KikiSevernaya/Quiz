@@ -78,6 +78,7 @@ void thirdw::recieveData(int points)
          if (inf == QMessageBox::No) {
              QApplication::quit();
          } else {
+             point2 = points;
              ui->pic->setVisible(false);
              ui->text->setVisible(false);
              ui->res->setVisible(false);
@@ -93,7 +94,6 @@ void thirdw::recieveData(int points)
              timer->start(1000);
          }
     }
-    point2 = points;
 }
 
 void thirdw::on_pushButton_2_clicked()
