@@ -74,7 +74,7 @@ void thirdw::recieveData(int points)
     if (points >= 800) {
         ui->pic->setStyleSheet("border-image: url(://miyazaki.jpeg);");
         ui->text->setText("Повелевай, мой господин, ты достоин зваться сильнейшим!\n");
-         QMessageBox::StandardButton inf= QMessageBox::information(this, "Предложение, от которого невозможно отказаться!", "Ты набрал достаточное количество очков для прохождения второго раунда\n Будете играть?" , QMessageBox::No|QMessageBox::Yes);
+         QMessageBox::StandardButton inf= QMessageBox::information(this, "Предложение, от которого невозможно отказаться!", "Ты набрал достаточное количество очков для прохождения во второй раунд\n Играем?" , QMessageBox::No|QMessageBox::Yes);
          if (inf == QMessageBox::No) {
              QApplication::quit();
          } else {
@@ -137,9 +137,9 @@ void thirdw::on_pushButton_clicked()
     qDebug() << "page: " << page;
     //qDebug() << then;
     if (!answer.isEmpty()) {
-        qDebug() << "answer не пустой";
+        //qDebug() << "answer не пустой";
         if (!lin.isEmpty()) {
-            qDebug() << "lin не пустая";
+            //qDebug() << "lin не пустая";
             QString pro1 = "grep";
             QStringList argument;
             argument << "-n" << "-i" << "^" + answer + "$" << "/home/fraukrizz/myPro/answers.txt";
@@ -154,16 +154,14 @@ void thirdw::on_pushButton_clicked()
             QString lin2;
             lin2.append(myPro2->readAllStandardOutput());
             if (page == lin2.toInt() - 11) {
-                qDebug() << "пи да рас";
                 ui->answer->setStyleSheet("color: black; background: white; border-width: 3px; border-style: solid; border-color: green green green green");
-                ui->answer->setText("Отлично! Ответ верный, поэтому вы получаете 500 очков.");
+                ui->answer->setText("Отлично! Ответ верный, поэтому ты получаешь 500 очков.");
                 ui->answer->setVisible(true);
                 timer->stop();
                 point2 += 500;
                 ui->score->setText(QString::number(point2));
                 ui->pushButton_2->setVisible(true);
             } else {
-                qDebug() << "су ка";
                 ui->answer->setStyleSheet("color: black; background: white; border-width: 3px; border-style: solid; border-color: red red red red");
                 ui->answer->setText("К сожалению, этот ответ неверный...Может быть в следующий раз ты будешь соображать лучше:) Пока!");
                 ui->answer->setVisible(true);
